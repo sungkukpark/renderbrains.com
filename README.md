@@ -1,5 +1,12 @@
 # Three.js Journey
 
+## Tech Stack
+
+- **Framework:** None (Vanilla JavaScript)
+- **UI:** HTML, CSS, and JavaScript
+- **Build tool:** Vite
+- **3D library:** Three.js
+
 ## Setup
 
 Download [Node.js](https://nodejs.org/en/download/).
