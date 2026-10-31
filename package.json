@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build:slides": "npm run build -w slides/ue-ev-setup",
+    "build": "npm run build:slides && vite build"
   },
   "repository": {
     "type": "git",
@@ -22,5 +23,8 @@
   "dependencies": {
     "three": "^0.186.1",
     "vite": "^8.3.5"
-  }
+  },
+  "workspaces": [
+    "slides/*"
+  ]
 }

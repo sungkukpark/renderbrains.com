@@ -1,0 +1,15 @@
+{
+  "name": "ue-ev-setup-slides",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build --base /slides/ue-ev-setup/ --out ../../static/slides/ue-ev-setup",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@slidev/cli": "^53.0.0",
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.5.0"
+  }
+}
