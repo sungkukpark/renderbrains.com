@@ -56,7 +56,7 @@ layoutClass: gap-8
 
 # 오늘 할 일
 
-- **수업 전 준비**: UE 5.8.4 프로젝트 세팅 12종 (2강)
+- **수업 전 준비**: UE 5.8.4 프로젝트 세팅 13종 (2강)
 - 노출(Exposure)이 무엇인지, 카메라로 이해하기
 - 스톱(Stop)과 **EV100**
 - 다이내믹 레인지와 "어디에 노출을 맞출 것인가"
@@ -70,21 +70,21 @@ layoutClass: gap-8
 
 ---
 
-# 0. 수업 전 준비 — 2강 프로젝트 세팅 12종
+# 0. 수업 전 준비 — 2강 프로젝트 세팅 13종
 
 <div class="text-lg">
 프로젝트 세팅은 별도 슬라이드로 정리했다. 실습 전에 먼저 적용하고 오자.
 </div>
 
 <div class="mt-6 text-lg">
-👉 <a href="/slides/ue-project-setup/">2강: 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종 (슬라이드)</a>
+👉 <a href="/slides/ue-project-setup/">2강: 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 13종 (슬라이드)</a>
 </div>
 
 <div class="mt-8 p-4 rounded bg-red-50 border border-red-300">
 <b>오늘 강의에 꼭 필요한 두 가지</b>
 
-- 세팅 10: **Auto Exposure Bias = 0** (기본값 1이면 모든 EV 측정이 한 스톱씩 어긋난다)
-- 세팅 6: Software Ray Tracing Mode = **Detail Tracing**
+- 세팅 11: **Auto Exposure Bias = 0** (기본값 1이면 모든 EV 측정이 한 스톱씩 어긋난다)
+- 세팅 7: Software Ray Tracing Mode = **Detail Tracing**
 </div>
 
 <!--
@@ -661,7 +661,7 @@ UE 5.8.4에서는 Min/Max EV100 항목 왼쪽 체크박스를 켜야 값이 적�
 </div>
 
 <!--
-84′51″. 프로젝트 세팅 슬라이드 10번에서 Bias를 0으로 둔 것과 PPV의 Exposure Compensation 0이 같은 의미.
+84′51″. 프로젝트 세팅 슬라이드 11번에서 Bias를 0으로 둔 것과 PPV의 Exposure Compensation 0이 같은 의미.
 -->
 
 ---
@@ -754,7 +754,7 @@ layout: section
 
 ### 세팅
 
-- [ ] 프로젝트 세팅 12종 적용 — 별도 슬라이드 (특히 **Bias = 0**, **Detail Tracing**)
+- [ ] 프로젝트 세팅 13종 적용 — 별도 슬라이드 (특히 **Bias = 0**, **Detail Tracing**)
 - [ ] Directional Light 세기는 **lux 물리값**으로 (정오 수만 lux, 선셋 수백 lux)
 - [ ] Light Units = Lumens, 실내 조명도 실제 전구 값으로
 - [ ] PPV 하나를 **Unbound**로 두고 Min/Max EV100 설정
@@ -779,7 +779,7 @@ layout: section
 
 | 실수 | 증상 | 처방 |
 |---|---|---|
-| Bias(Exposure Compensation)를 1로 둔 채 작업 | 모든 측정이 1스톱씩 어긋남 | 프로젝트 세팅 슬라이드 10번, PPV에서 0 확인 |
+| Bias(Exposure Compensation)를 1로 둔 채 작업 | 모든 측정이 1스톱씩 어긋남 | 프로젝트 세팅 슬라이드 11번, PPV에서 0 확인 |
 | Directional Light 10 lux 그대로 | 그림자 얕고, 실내외 전환 느낌 없음 | 물리값 lux로 교체 |
 | Min EV100 미설정 | 어두운 방이 자동으로 밝아져 무드 상실 | Min EV100을 올려 하한 고정 |
 | 라이트 세기로 분위기 조절 | 다른 씬에서 재현 불가, 비율 붕괴 | 라이트는 물리값, 분위기는 노출로 |

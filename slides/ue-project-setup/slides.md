@@ -5,7 +5,7 @@ titleTemplate: '%s · RenderBrains'
 author: Sungkuk Park (RenderBrains)
 info: |
   레벨 디자이너를 위한 라이팅 강의 두 번째 시간 (수업 전 준비).
-  언리얼 엔진 5.8.4 새 프로젝트에 라이팅용 디폴트 프로젝트 세팅 12종을 적용합니다.
+  언리얼 엔진 5.8.4 새 프로젝트에 라이팅용 디폴트 프로젝트 세팅 13종을 적용합니다.
 lang: ko
 aspectRatio: 16/9
 transition: slide-left
@@ -20,7 +20,7 @@ class: text-left
 ---
 
 # 레벨 디자인에서의 라이팅 2
-## 수업 전 준비: 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종
+## 수업 전 준비: 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 13종
 
 <div class="mt-8 text-lg opacity-80">
 라이팅을 시작하기 전, 모두가 같은 출발선에 서기 위한 세팅
@@ -49,7 +49,7 @@ class: text-left
 - 다음 강의(EV 노출 세팅) 실습은 이 세팅 위에서 진행한다
 
 <div class="mt-6 p-4 rounded bg-amber-50 border border-amber-300 text-sm">
-<b>진행 방법</b> — 새 프로젝트 생성 → <code>Edit &gt; Project Settings</code> → 아래 12개 항목을 순서대로 변경 → 에디터 재시작 요구 시 재시작
+<b>진행 방법</b> — 새 프로젝트 생성 → <code>Edit &gt; Project Settings</code> → 아래 13개 항목을 순서대로 변경 → 에디터 재시작 요구 시 재시작
 </div>
 
 <!--
@@ -59,16 +59,18 @@ class: text-left
 
 ---
 
-# 세팅 1–3: 렌더러와 Lumen
+# 세팅 1–4: 렌더러, 셰이더 모델, Lumen
 
 | # | 경로 (Project Settings) | 값 | 왜 |
 |---|---|---|---|
 | 1 | Platforms › Windows › Target RHIs › **Default RHI** | **DirectX 12** | Lumen HWRT, Nanite, VSM이 DX12를 전제로 함 |
-| 2 | Engine › Rendering › Global Illumination › **Dynamic Global Illumination Method** | **Lumen** | 실시간 간접광. 라이트를 옮기면 바운스가 즉시 따라옴 |
-| 3 | Engine › Rendering › Reflections › **Reflection Method** | **Lumen** | GI와 같은 데이터로 반사를 계산해 일관성 확보 |
+| 2 | Platforms › Windows › Targeted RHIs › **D3D12 Targeted Shader Formats** | ✅ **SM6** | 하드웨어 레이 트레이싱(DXR)과 Nanite·VSM·Lumen이 쓰는 Wave 연산·64비트 아토믹은 SM6 셰이더에서만 컴파일된다. SM5만 켜져 있으면 1번에서 DX12를 골라도 이 기능들이 꺼진다 |
+| 3 | Engine › Rendering › Global Illumination › **Dynamic Global Illumination Method** | **Lumen** | 실시간 간접광. 라이트를 옮기면 바운스가 즉시 따라옴 |
+| 4 | Engine › Rendering › Reflections › **Reflection Method** | **Lumen** | GI와 같은 데이터로 반사를 계산해 일관성 확보 |
 
-<div class="mt-4 grid grid-cols-3 gap-4 text-xs opacity-70">
+<div class="mt-4 grid grid-cols-4 gap-4 text-xs opacity-70">
 <div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: Default RHI</div>
+<div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: D3D12 Shader Formats</div>
 <div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: Dynamic GI Method</div>
 <div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: Reflection Method</div>
 </div>
@@ -79,39 +81,39 @@ class: text-left
 
 ---
 
-# 세팅 4–6: 레이 트레이싱 방식
+# 세팅 5–7: 레이 트레이싱 방식
 
 | # | 경로 (Engine › Rendering) | 값 | 왜 |
 |---|---|---|---|
-| 4 | Lumen › **Use Hardware Ray Tracing when available** | ✅ true | GPU가 지원하면 더 정확한 트레이싱 사용 |
-| 5 | Hardware Ray Tracing › **Support Hardware Ray Tracing** | ✅ true | 4번이 실제로 동작하기 위한 전제 조건 |
-| 6 | Lumen › **Software Ray Tracing Mode** | **Detail Tracing** | 메시 디스턴스 필드를 써서 작은 디테일의 간접광·반사 품질 향상 |
+| 5 | Lumen › **Use Hardware Ray Tracing when available** | ✅ true | GPU가 지원하면 더 정확한 트레이싱 사용 |
+| 6 | Hardware Ray Tracing › **Support Hardware Ray Tracing** | ✅ true | 5번이 실제로 동작하기 위한 전제 조건 |
+| 7 | Lumen › **Software Ray Tracing Mode** | **Detail Tracing** | 메시 디스턴스 필드를 써서 작은 디테일의 간접광·반사 품질 향상 |
 
 <div class="mt-6 p-4 rounded bg-red-50 border border-red-300">
-<b>⚠ 6번은 매번 바꿔야 한다.</b> 엔진 기본값은 <b>Global Tracing</b>이라 새 프로젝트를 만들 때마다 <b>Detail Tracing</b>으로 직접 바꿔 줘야 한다.
+<b>⚠ 7번은 매번 바꿔야 한다.</b> 엔진 기본값은 <b>Global Tracing</b>이라 새 프로젝트를 만들 때마다 <b>Detail Tracing</b>으로 직접 바꿔 줘야 한다.
 </div>
 
 <!--
-Detail Tracing은 Mesh Distance Field를 사용하므로 8번(Generate Mesh Distance Fields)과 짝이다.
+Detail Tracing은 Mesh Distance Field를 사용하므로 9번(Generate Mesh Distance Fields)과 짝이다.
 -->
 
 ---
 
-# 세팅 7–9: 그림자, 디스턴스 필드, Nanite
+# 세팅 8–10: 그림자, 디스턴스 필드, Nanite
 
 | # | 경로 (Engine › Rendering) | 값 | 왜 |
 |---|---|---|---|
-| 7 | Direct Lighting › **Shadow Map Method** | **Virtual Shadow Maps** | Nanite 지오메트리에 맞는 고해상도 그림자. 근경·원경 모두 선명 |
-| 8 | Software Ray Tracing › **Generate Mesh Distance Fields** | ✅ true | 6번 Detail Tracing과 Lumen 소프트웨어 경로의 데이터 소스 |
-| 9 | Nanite › **Nanite** | ✅ true | 고밀도 메시를 그대로 사용. VSM·Lumen과 함께 묶여 동작 |
+| 8 | Direct Lighting › **Shadow Map Method** | **Virtual Shadow Maps** | Nanite 지오메트리에 맞는 고해상도 그림자. 근경·원경 모두 선명 |
+| 9 | Software Ray Tracing › **Generate Mesh Distance Fields** | ✅ true | 7번 Detail Tracing과 Lumen 소프트웨어 경로의 데이터 소스 |
+| 10 | Nanite › **Nanite** | ✅ true | 고밀도 메시를 그대로 사용. VSM·Lumen과 함께 묶여 동작 |
 
 <div class="mt-4 text-sm opacity-70">
-7·8·9는 서로 의존한다. 하나만 켜면 품질이나 성능이 어긋나기 쉽다.
+8·9·10은 서로 의존한다. 하나만 켜면 품질이나 성능이 어긋나기 쉽다.
 </div>
 
 ---
 
-# 세팅 10: Auto Exposure 기본값 — EV 강의의 출발점
+# 세팅 11: Auto Exposure 기본값 — EV 강의의 출발점
 
 경로: Engine › Rendering › Default Settings › **Auto Exposure**
 
@@ -133,12 +135,12 @@ Auto Exposure Bias는 콘솔 변수 r.DefaultFeature.AutoExposure.Bias 에 해�
 
 ---
 
-# 세팅 11–12: 라이트 단위와 대기 안개
+# 세팅 12–13: 라이트 단위와 대기 안개
 
 | # | 경로 (Engine › Rendering) | 값 | 왜 |
 |---|---|---|---|
-| 11 | Default Settings › **Light Units** | **Lumens – Luminous Flux, Normalized** | 포인트·스팟 라이트를 실제 전구처럼 루멘(lm)으로 입력. 물리 기반 라이팅의 기본 |
-| 12 | **Support Sky Atmosphere Affecting Height Fog** | ✅ true | 높이 안개가 하늘 색·태양 색을 물려받아 대기와 안개가 따로 놀지 않게 한다 |
+| 12 | Default Settings › **Light Units** | **Lumens – Luminous Flux, Normalized** | 포인트·스팟 라이트를 실제 전구처럼 루멘(lm)으로 입력. 물리 기반 라이팅의 기본 |
+| 13 | **Support Sky Atmosphere Affecting Height Fog** | ✅ true | 높이 안개가 하늘 색·태양 색을 물려받아 대기와 안개가 따로 놀지 않게 한다 |
 
 <div class="mt-6 p-4 rounded bg-sky-50 border border-sky-300 text-sm">
 Directional Light는 <b>lux</b>, Sky Light는 <b>cd/m²</b>, Point/Spot은 <b>lm</b>(또는 cd). 단위가 다르다는 것만 먼저 기억하자. 뒤에서 왜 중요한지 나온다.
@@ -152,21 +154,22 @@ Directional Light는 <b>lux</b>, Sky Light는 <b>cd/m²</b>, Point/Spot은 <b>lm
 <div>
 
 - [ ] 1. Default RHI = DirectX 12
-- [ ] 2. Dynamic GI Method = Lumen
-- [ ] 3. Reflection Method = Lumen
-- [ ] 4. Lumen HWRT when available = true
-- [ ] 5. Support Hardware Ray Tracing = true
-- [ ] 6. Software Ray Tracing Mode = **Detail Tracing**
+- [ ] 2. D3D12 Targeted Shader Formats = **SM6**
+- [ ] 3. Dynamic GI Method = Lumen
+- [ ] 4. Reflection Method = Lumen
+- [ ] 5. Lumen HWRT when available = true
+- [ ] 6. Support Hardware Ray Tracing = true
+- [ ] 7. Software Ray Tracing Mode = **Detail Tracing**
 
 </div>
 <div>
 
-- [ ] 7. Shadow Map Method = Virtual Shadow Maps
-- [ ] 8. Generate Mesh Distance Fields = true
-- [ ] 9. Nanite = true
-- [ ] 10. Auto Exposure: Histogram, **Bias = 0**
-- [ ] 11. Light Units = Lumens (Normalized)
-- [ ] 12. Sky Atmosphere Affecting Height Fog = true
+- [ ] 8. Shadow Map Method = Virtual Shadow Maps
+- [ ] 9. Generate Mesh Distance Fields = true
+- [ ] 10. Nanite = true
+- [ ] 11. Auto Exposure: Histogram, **Bias = 0**
+- [ ] 12. Light Units = Lumens (Normalized)
+- [ ] 13. Sky Atmosphere Affecting Height Fog = true
 
 </div>
 </div>
