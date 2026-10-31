@@ -521,6 +521,7 @@ layout: section
    - **Sky Atmosphere** (대기)
    - **Sky Light** (하늘에서 오는 간접광)
    - **Volumetric Cloud** (구름)
+   - **Exponential Height Fog** (대기 원근감·안개)
 3. Sky Light와 Directional Light의 Mobility를 **Movable**로  
    (Lumen을 쓰면 라이트는 Movable이 기본)
 4. Directional Light를 수직으로 세우면 **정오**, 눕히면 **선셋**
@@ -528,13 +529,13 @@ layout: section
 이것으로 "라이팅이 끝났다"고 느껴진다. 과연 그럴까?
 
 </div>
-<div class="h-64 border-2 border-dashed rounded flex items-center justify-center text-xs opacity-70">
-스크린샷: 기본 프로시저럴 스카이 (UE 5.8.4)
+<div class="flex items-center">
+<video src="./images/procedural-sky.mp4" class="mx-auto max-h-96 rounded shadow" autoplay loop muted playsinline aria-label="기본 프로시저럴 스카이 (UE 5.8.4)"></video>
 </div>
 </div>
 
 <!--
-37′09″ 빈 레벨 데모, 57′41″ 필요 액터 4종. 이 네 액터를 묶어 "프로시저럴 스카이"라 부른다.
+37′09″ 빈 레벨 데모, 57′41″ 필요 액터 4종 + Exponential Height Fog. 이 다섯 액터를 묶어 "프로시저럴 스카이"라 부른다.
 -->
 
 ---
