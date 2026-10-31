@@ -87,6 +87,13 @@ layoutClass: gap-8
 - 세팅 7: Software Ray Tracing Mode = **Detail Tracing**
 </div>
 
+<div class="mt-6 text-lg">
+👉 <a href="https://drive.google.com/file/d/1F2WxQaZrTPNAyo43ZNpgFIMvVndu2fGs/view?usp=sharing" target="_blank" rel="noopener"><b>BP_LightCalibrator</b> 어셋 다운로드 (Google Drive)</a>
+</div>
+<div class="mt-2 text-sm opacity-80">
+알베도가 서로 다른 큐브들로 구성된 측정용 블루프린트. 프로젝트 Content 폴더에 넣어 두자 — <Link to="30">보너스: 빛 × 알베도</Link>에서 사용한다.
+</div>
+
 <!--
 [세팅 덱](/slides/ue-project-setup/) · [원문 (네이버 블로그)](https://blog.naver.com/sungkuk_park/224061100654)
 -->
@@ -771,8 +778,13 @@ UE 5.8.4에서는 Min/Max EV100 항목 왼쪽 체크박스를 켜야 값이 적�
 
 - 레벨 디자이너에게: **벽 재질의 밝기를 바꾸면 노출도 바뀐다.** 블록아웃 재질을 미들 그레이(0.18)로 두면 노출 작업이 안정적이다
 
+<div class="mt-4 p-3 rounded bg-amber-50 border border-amber-300 text-sm">
+실습: <Link to="3">슬라이드 3</Link>에서 받은 <b>BP_LightCalibrator</b>를 레벨에 배치하자. 큐브 하나하나가 위 표의 <b>알베도(Base Color)</b> 값을 가진다 — 같은 빛 아래서 각 큐브에 스팟 미터를 대면 EV 차이가 그대로 보인다.
+</div>
+
 <!--
 98′42″ 스팟 미터 Q&A. Deferred 렌더러에서 Base Color 버퍼 × 라이팅 버퍼.
+BP_LightCalibrator 큐브 = 표의 알베도 값 (슬라이드 3에서 다운로드).
 -->
 
 ---
