@@ -92,6 +92,36 @@ layoutClass: gap-8
 -->
 
 ---
+
+# 실습 준비 — 2주차 실습 파일
+
+<div class="text-lg">
+👉 <a href="https://drive.google.com/file/d/1YGMl5WSrqa-mKjCzwL2QVRiIdr_n23jB/view?usp=sharing" target="_blank" rel="noopener">2주차 실습 파일 다운로드 (Google Drive)</a>
+</div>
+
+<div class="mt-6">
+
+1. 다운로드한 프로젝트를 **언리얼 엔진 5.8.4**로 연다
+2. Content Browser에서 **`Demonstration_Day`** 레벨을 찾아 우클릭 → **Duplicate**
+3. 복제한 레벨의 **이름을 바꾸고**(예: `Demonstration_Dark`) 열기
+4. Outliner에서 아래 액터를 **모두 찾아 삭제**한다
+   - 모든 **Light source** (Directional / Sky / Point / Spot / Rect Light 등)
+   - **Sphere HDRI** 액터
+   - **Smoke VFX** 액터
+
+</div>
+
+<div class="mt-6 p-4 rounded bg-gray-900 text-white">
+목표: 뷰포트가 <b>완전한 암흑</b>이 되는 것. 빛이 하나도 없는 상태에서 노출을 처음부터 쌓아 올린다.
+</div>
+
+<!--
+원본 Demonstration_Day는 건드리지 않고 반드시 복제본에서 작업한다.
+Outliner 검색창에 Light, HDRI, Smoke 등을 입력해 걸러 내면 빠짐없이 찾기 쉽다.
+삭제 후에도 화면이 밝게 보이면 오토 익스포저가 어둠에 맞춰 끌어올린 것이므로, 남은 광원이 없는지 다시 확인한다.
+-->
+
+---
 layout: section
 ---
 
