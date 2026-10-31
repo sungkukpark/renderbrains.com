@@ -149,6 +149,11 @@ layout: section
 이 현상을 자동으로 만들어 주는 것이 **오토 익스포저(Auto Exposure)**.  
 언리얼 디버그 뷰 이름은 **Eye Adaptation**(눈의 적응)이다.
 
+<div class="mt-4 p-3 rounded bg-amber-50 border border-amber-300 text-sm">
+💡 뷰포트 메뉴에서 <b>Eye Adaptation</b> 항목이 보이지 않으면 콘솔(<code>`</code>)에<br>
+<code>ShowFlag.VisualizeHDR 1</code> 을 입력해 켠다. (<code>1</code> = 켜기, <code>0</code> = 끄기)
+</div>
+
 </div>
 <div class="h-56 border-2 border-dashed rounded flex items-center justify-center text-xs opacity-70">
 스크린샷: 실내에서 바라본 창밖 클리핑 (UE 5.8.4)
