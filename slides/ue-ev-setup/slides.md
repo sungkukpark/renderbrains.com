@@ -5,7 +5,7 @@ titleTemplate: '%s · RenderBrains'
 author: Sungkuk Park (RenderBrains)
 info: |
   레벨 디자이너를 위한 라이팅 강의 두 번째 시간.
-  언리얼 엔진 5.8.4에서 프로젝트를 세팅하고, 노출(EV)의 원리를 이해한 뒤,
+  언리얼 엔진 5.8.4에서 노출(EV)의 원리를 이해한 뒤,
   Post Process Volume으로 노출 범위를 직접 잡아 보는 실습 중심 강의입니다.
 lang: ko
 aspectRatio: 16/9
@@ -56,7 +56,7 @@ layoutClass: gap-8
 
 # 오늘 할 일
 
-- **수업 전 준비**: UE 5.8.4 프로젝트 세팅 12종
+- **수업 전 준비**: UE 5.8.4 프로젝트 세팅 12종 (별도 슬라이드)
 - 노출(Exposure)이 무엇인지, 카메라로 이해하기
 - 스톱(Stop)과 **EV100**
 - 다이내믹 레인지와 "어디에 노출을 맞출 것인가"
@@ -69,157 +69,27 @@ layoutClass: gap-8
 -->
 
 ---
-layout: section
----
 
-# 0. 수업 전 준비
-## 언리얼 라이팅 캠프 공식 디폴트 프로젝트 세팅 12종
+# 0. 수업 전 준비 — 프로젝트 세팅 12종
 
-<div class="text-sm opacity-70 mt-4">
-출처: 박성국, "라이팅을 하기 전 프로젝트 세팅하는 법" (네이버 블로그, 2025-11-01)<br>
-https://blog.naver.com/sungkuk_park/224061100654
+<div class="text-lg">
+프로젝트 세팅은 별도 슬라이드로 정리했다. 실습 전에 먼저 적용하고 오자.
+</div>
+
+<div class="mt-6 text-lg">
+👉 <a href="/slides/ue-project-setup/">언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종 (슬라이드)</a>
+</div>
+
+<div class="mt-8 p-4 rounded bg-red-50 border border-red-300">
+<b>오늘 강의에 꼭 필요한 두 가지</b>
+
+- 세팅 10: **Auto Exposure Bias = 0** (기본값 1이면 모든 EV 측정이 한 스톱씩 어긋난다)
+- 세팅 6: Software Ray Tracing Mode = **Detail Tracing**
 </div>
 
 <!--
-새 프로젝트(Blank 또는 Third Person, Starter Content 없음)를 UE 5.8.4로 만든 뒤 시작.
-모든 항목은 Edit > Project Settings 안에 있다. 대부분 변경 후 에디터 재시작을 요구한다.
+세팅 덱: /slides/ue-project-setup/ · 원문: https://blog.naver.com/sungkuk_park/224061100654
 -->
-
----
-
-# 왜 "디폴트 세팅"이 필요한가
-
-- **디폴트(Default)** = 프로젝트의 기준점. 매번 새로 고민하지 않아도 같은 품질에서 출발하기 위한 출발선
-- 기준: **일반적인 PC 환경에서 낼 수 있는 가장 높은 품질의 라이팅**
-- 모바일, 저사양 타깃 등 특수한 목적이면 일부 항목을 **바꿔야** 한다. 맹신 금지
-- 오늘 강의의 노출 실습은 이 세팅 위에서 진행한다
-
-<div class="mt-6 p-4 rounded bg-amber-50 border border-amber-300 text-sm">
-<b>진행 방법</b> — 새 프로젝트 생성 → <code>Edit &gt; Project Settings</code> → 아래 12개 항목을 순서대로 변경 → 에디터 재시작 요구 시 재시작
-</div>
-
-<!--
-"왜 이 값인가"를 모른 채 켜는 것은 지난 시간 말한 "1번 켜세요, 3 넣으세요" 식 학습이다.
-오늘은 각 항목이 라이팅에 왜 필요한지 한 줄씩 붙여서 본다.
--->
-
----
-
-# 세팅 1–3: 렌더러와 Lumen
-
-| # | 경로 (Project Settings) | 값 | 왜 |
-|---|---|---|---|
-| 1 | Platforms › Windows › Target RHIs › **Default RHI** | **DirectX 12** | Lumen HWRT, Nanite, VSM이 DX12를 전제로 함 |
-| 2 | Engine › Rendering › Global Illumination › **Dynamic Global Illumination Method** | **Lumen** | 실시간 간접광. 라이트를 옮기면 바운스가 즉시 따라옴 |
-| 3 | Engine › Rendering › Reflections › **Reflection Method** | **Lumen** | GI와 같은 데이터로 반사를 계산해 일관성 확보 |
-
-<div class="mt-4 grid grid-cols-3 gap-4 text-xs opacity-70">
-<div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: Default RHI</div>
-<div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: Dynamic GI Method</div>
-<div class="h-24 border-2 border-dashed rounded flex items-center justify-center">스크린샷: Reflection Method</div>
-</div>
-
-<!--
-스크린샷 자리표시. UE 5.8.4에서 직접 찍은 캡처로 교체 예정 (public/ 폴더).
--->
-
----
-
-# 세팅 4–6: 레이 트레이싱 방식
-
-| # | 경로 (Engine › Rendering) | 값 | 왜 |
-|---|---|---|---|
-| 4 | Lumen › **Use Hardware Ray Tracing when available** | ✅ true | GPU가 지원하면 더 정확한 트레이싱 사용 |
-| 5 | Hardware Ray Tracing › **Support Hardware Ray Tracing** | ✅ true | 4번이 실제로 동작하기 위한 전제 조건 |
-| 6 | Lumen › **Software Ray Tracing Mode** | **Detail Tracing** | 메시 디스턴스 필드를 써서 작은 디테일의 간접광·반사 품질 향상 |
-
-<div class="mt-6 p-4 rounded bg-red-50 border border-red-300">
-<b>⚠ 6번은 매번 바꿔야 한다.</b> 엔진 기본값은 <b>Global Tracing</b>이라 새 프로젝트를 만들 때마다 <b>Detail Tracing</b>으로 직접 바꿔 줘야 한다.
-</div>
-
-<!--
-Detail Tracing은 Mesh Distance Field를 사용하므로 8번(Generate Mesh Distance Fields)과 짝이다.
--->
-
----
-
-# 세팅 7–9: 그림자, 디스턴스 필드, Nanite
-
-| # | 경로 (Engine › Rendering) | 값 | 왜 |
-|---|---|---|---|
-| 7 | Direct Lighting › **Shadow Map Method** | **Virtual Shadow Maps** | Nanite 지오메트리에 맞는 고해상도 그림자. 근경·원경 모두 선명 |
-| 8 | Software Ray Tracing › **Generate Mesh Distance Fields** | ✅ true | 6번 Detail Tracing과 Lumen 소프트웨어 경로의 데이터 소스 |
-| 9 | Nanite › **Nanite** | ✅ true | 고밀도 메시를 그대로 사용. VSM·Lumen과 함께 묶여 동작 |
-
-<div class="mt-4 text-sm opacity-70">
-7·8·9는 서로 의존한다. 하나만 켜면 품질이나 성능이 어긋나기 쉽다.
-</div>
-
----
-
-# 세팅 10: Auto Exposure 기본값 — 오늘 강의의 출발점
-
-경로: Engine › Rendering › Default Settings › **Auto Exposure**
-
-| 항목 | 값 | 왜 |
-|---|---|---|
-| Auto Exposure | ✅ true | 카메라처럼 밝기에 따라 노출이 자동 조절되게 한다 |
-| Auto Exposure Method | **Auto Exposure Histogram** | 화면 밝기 분포(히스토그램)로 노출을 결정. 오늘 디버그 뷰에서 보게 될 것 |
-| **Auto Exposure Bias** | **1 → 0** | 엔진 기본값 1은 모든 장면을 +1스톱(2배) 밝게 만든다. 0이어야 측정값과 결과가 일치 |
-| Extend default luminance range in Auto Exposure settings | true (고정) | 5.6 이후 항상 켜져 있고 바꿀 수 없다. EV100 단위로 노출을 다루기 위한 전제 |
-
-<div class="mt-4 p-3 rounded bg-red-50 border border-red-300 text-sm">
-<b>⚠ Bias를 0으로 바꾸지 않으면</b> 이후 모든 EV 측정과 세팅이 한 스톱씩 어긋난다.
-</div>
-
-<!--
-Auto Exposure Bias는 콘솔 변수 r.DefaultFeature.AutoExposure.Bias 에 해당. 기본 1.0.
-강의 Q&A에서도 "캘리브레이션할 때는 Exposure Compensation을 0으로" 라고 설명됨 105′01″.
--->
-
----
-
-# 세팅 11–12: 라이트 단위와 대기 안개
-
-| # | 경로 (Engine › Rendering) | 값 | 왜 |
-|---|---|---|---|
-| 11 | Default Settings › **Light Units** | **Lumens – Luminous Flux, Normalized** | 포인트·스팟 라이트를 실제 전구처럼 루멘(lm)으로 입력. 물리 기반 라이팅의 기본 |
-| 12 | **Support Sky Atmosphere Affecting Height Fog** | ✅ true | 높이 안개가 하늘 색·태양 색을 물려받아 대기와 안개가 따로 놀지 않게 한다 |
-
-<div class="mt-6 p-4 rounded bg-sky-50 border border-sky-300 text-sm">
-Directional Light는 <b>lux</b>, Sky Light는 <b>cd/m²</b>, Point/Spot은 <b>lm</b>(또는 cd). 단위가 다르다는 것만 먼저 기억하자. 뒤에서 왜 중요한지 나온다.
-</div>
-
----
-
-# 세팅 완료 체크리스트
-
-<div class="grid grid-cols-2 gap-x-10 text-sm">
-<div>
-
-- [ ] 1. Default RHI = DirectX 12
-- [ ] 2. Dynamic GI Method = Lumen
-- [ ] 3. Reflection Method = Lumen
-- [ ] 4. Lumen HWRT when available = true
-- [ ] 5. Support Hardware Ray Tracing = true
-- [ ] 6. Software Ray Tracing Mode = **Detail Tracing**
-
-</div>
-<div>
-
-- [ ] 7. Shadow Map Method = Virtual Shadow Maps
-- [ ] 8. Generate Mesh Distance Fields = true
-- [ ] 9. Nanite = true
-- [ ] 10. Auto Exposure: Histogram, **Bias = 0**
-- [ ] 11. Light Units = Lumens (Normalized)
-- [ ] 12. Sky Atmosphere Affecting Height Fog = true
-
-</div>
-</div>
-
-<div class="mt-6 text-sm opacity-70">
-에디터를 재시작하고 나면, 이제 "빛의 양"을 배울 준비가 끝났다.
-</div>
 
 ---
 layout: section
@@ -791,7 +661,7 @@ UE 5.8.4에서는 Min/Max EV100 항목 왼쪽 체크박스를 켜야 값이 적�
 </div>
 
 <!--
-84′51″. 프로젝트 세팅 10번에서 Bias를 0으로 둔 것과 PPV의 Exposure Compensation 0이 같은 의미.
+84′51″. 프로젝트 세팅 슬라이드 10번에서 Bias를 0으로 둔 것과 PPV의 Exposure Compensation 0이 같은 의미.
 -->
 
 ---
@@ -884,7 +754,7 @@ layout: section
 
 ### 세팅
 
-- [ ] 프로젝트 세팅 12종 적용 (특히 **Bias = 0**, **Detail Tracing**)
+- [ ] 프로젝트 세팅 12종 적용 — 별도 슬라이드 (특히 **Bias = 0**, **Detail Tracing**)
 - [ ] Directional Light 세기는 **lux 물리값**으로 (정오 수만 lux, 선셋 수백 lux)
 - [ ] Light Units = Lumens, 실내 조명도 실제 전구 값으로
 - [ ] PPV 하나를 **Unbound**로 두고 Min/Max EV100 설정
@@ -909,7 +779,7 @@ layout: section
 
 | 실수 | 증상 | 처방 |
 |---|---|---|
-| Bias(Exposure Compensation)를 1로 둔 채 작업 | 모든 측정이 1스톱씩 어긋남 | 프로젝트 세팅 10번, PPV에서 0 확인 |
+| Bias(Exposure Compensation)를 1로 둔 채 작업 | 모든 측정이 1스톱씩 어긋남 | 프로젝트 세팅 슬라이드 10번, PPV에서 0 확인 |
 | Directional Light 10 lux 그대로 | 그림자 얕고, 실내외 전환 느낌 없음 | 물리값 lux로 교체 |
 | Min EV100 미설정 | 어두운 방이 자동으로 밝아져 무드 상실 | Min EV100을 올려 하한 고정 |
 | 라이트 세기로 분위기 조절 | 다른 씬에서 재현 불가, 비율 붕괴 | 라이트는 물리값, 분위기는 노출로 |
