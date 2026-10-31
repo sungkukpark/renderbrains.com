@@ -33,7 +33,7 @@ class: text-left
 
 <!--
 1강(오리엔테이션)은 개념 위주였고 엔진을 열지 않았다. 2강에서 프로젝트를 세팅했고, 이번 편은 UE 5.8.4를 직접 열고 따라 하는 실습 편.
-강의 순서는 Unreal Lighting Camp "언리얼 코어 라이팅 클래스 — 첫 번째 시간"(youtu.be/EpC5siHpS_U)의 흐름을 따른다.
+강의 순서는 Unreal Lighting Camp [「언리얼 코어 라이팅 클래스 — 첫 번째 시간」](https://youtu.be/EpC5siHpS_U)의 흐름을 따른다.
 -->
 
 ---
@@ -88,7 +88,7 @@ layoutClass: gap-8
 </div>
 
 <!--
-세팅 덱: /slides/ue-project-setup/ · 원문: https://blog.naver.com/sungkuk_park/224061100654
+[세팅 덱](/slides/ue-project-setup/) · [원문 (네이버 블로그)](https://blog.naver.com/sungkuk_park/224061100654)
 -->
 
 ---
@@ -835,12 +835,12 @@ layout: end
 
 **참고 자료**
 
-- Unreal Lighting Camp, "언리얼 코어 라이팅 클래스 — 첫 번째 시간" — https://youtu.be/EpC5siHpS_U  
+- Unreal Lighting Camp, <a href="https://youtu.be/EpC5siHpS_U" target="_blank" rel="noopener">"언리얼 코어 라이팅 클래스 — 첫 번째 시간"</a>  
   (본 강의의 구성 순서는 이 영상을 따랐습니다)
-- 박성국, "라이팅을 하기 전 프로젝트 세팅하는 법 (디폴트 프로젝트 세팅 12종)" — https://blog.naver.com/sungkuk_park/224061100654
+- 박성국, <a href="https://blog.naver.com/sungkuk_park/224061100654" target="_blank" rel="noopener">"라이팅을 하기 전 프로젝트 세팅하는 법 (디폴트 프로젝트 세팅 12종)"</a>
 - Epic Games, Unreal Engine 문서: Auto Exposure / Physical Lighting Units
 - Wikipedia: Exposure value, Daylight (Illuminance table)
-- 1강: 레벨 디자인에서의 라이팅 1 — 오리엔테이션 (/slides/lighting-orientation/)
+- <a href="/slides/lighting-orientation/">1강: 레벨 디자인에서의 라이팅 1 — 오리엔테이션</a>
 
 </div>
 

@@ -27,8 +27,7 @@ class: text-left
 </div>
 
 <div class="mt-6 text-sm opacity-70">
-출처: 박성국, "라이팅을 하기 전 프로젝트 세팅하는 법" (네이버 블로그, 2025-11-01)<br>
-https://blog.naver.com/sungkuk_park/224061100654
+출처: 박성국, <a href="https://blog.naver.com/sungkuk_park/224061100654" target="_blank" rel="noopener">"라이팅을 하기 전 프로젝트 세팅하는 법"</a> (네이버 블로그, 2025-11-01)
 </div>
 
 <div class="abs-bl m-10 text-sm opacity-70">

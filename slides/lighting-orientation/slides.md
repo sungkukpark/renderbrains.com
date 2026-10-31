@@ -85,7 +85,7 @@ layoutClass: gap-8
 <img src="./images/image.png" class="mx-auto max-h-96 rounded shadow" alt="포컬 포인트 예시">
 
 <div class="mt-4 text-sm opacity-70 text-center">
-참조: <a href="https://gurneyjourney.blogspot.com/2009/05/tonal-focus.html">Gurney Journey — Tonal Focus</a>
+참조: <a href="https://gurneyjourney.blogspot.com/2009/05/tonal-focus.html" target="_blank" rel="noopener">Gurney Journey — Tonal Focus</a>
 </div>
 
 ---
@@ -98,7 +98,7 @@ layoutClass: gap-8
 - 사례: *Thief*, *Dishonored*, *Inside*
 
 <div class="mt-4 text-sm opacity-70">
-참조: <a href="https://youtu.be/NzCXVfzQ-EI">https://youtu.be/NzCXVfzQ-EI</a>
+참조: <a href="https://youtu.be/NzCXVfzQ-EI" target="_blank" rel="noopener">키아로스쿠로 해설 영상 (YouTube)</a>
 </div>
 
 ---
@@ -160,7 +160,7 @@ layoutClass: gap-8
 "Clean House" 미션 — 세 가지 일(유도·분위기·가독성)이 한 레벨 안에서 어떻게 맞물리는지 보자
 
 <div class="mt-6">
-<a href="https://youtu.be/KurHR-5VmIw">https://youtu.be/KurHR-5VmIw</a>
+<a href="https://youtu.be/KurHR-5VmIw" target="_blank" rel="noopener">"Clean House" 미션 플레이 영상 보기 (YouTube)</a>
 </div>
 
 ---
@@ -240,7 +240,7 @@ layoutClass: gap-8
 - 레벨 디자이너가 책임지는 것은 공간(space)이다. 그 공간을 인식하는 것은 사람의 눈(eyes)이고, 그 눈에 보이게 하는 것은 빛(light)이다. 그렇다면 공간을 시각적으로 "존재"하게 만드는 것은 결국 빛이 아닐까?
 
 <div class="mt-6 text-sm opacity-70">
-<a href="https://youtu.be/BZ5T8k_MsuE">https://youtu.be/BZ5T8k_MsuE</a>
+<a href="https://youtu.be/BZ5T8k_MsuE" target="_blank" rel="noopener">마무리 참고 영상 (YouTube)</a>
 </div>
 
 ---
