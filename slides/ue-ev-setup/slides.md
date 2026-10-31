@@ -1,10 +1,10 @@
 ---
 theme: default
-title: 레벨 디자이너를 위한 라이팅 2 — UE 5.8.4 EV 세팅
+title: 레벨 디자이너를 위한 라이팅 3 — UE 5.8.4 EV 세팅
 titleTemplate: '%s · RenderBrains'
 author: Sungkuk Park (RenderBrains)
 info: |
-  레벨 디자이너를 위한 라이팅 강의 두 번째 시간.
+  레벨 디자이너를 위한 라이팅 강의 세 번째 시간.
   언리얼 엔진 5.8.4에서 노출(EV)의 원리를 이해한 뒤,
   Post Process Volume으로 노출 범위를 직접 잡아 보는 실습 중심 강의입니다.
 lang: ko
@@ -20,7 +20,7 @@ layout: cover
 class: text-left
 ---
 
-# 레벨 디자인에서의 라이팅 2
+# 레벨 디자인에서의 라이팅 3
 ## 언리얼 엔진 5.8.4에서 EV(노출) 세팅하기
 
 <div class="mt-8 text-lg opacity-80">
@@ -32,7 +32,7 @@ class: text-left
 </div>
 
 <!--
-지난 편은 개념 위주였고 엔진을 열지 않았다. 이번 편은 UE 5.8.4를 직접 열고 따라 하는 실습 편.
+1강(오리엔테이션)은 개념 위주였고 엔진을 열지 않았다. 2강에서 프로젝트를 세팅했고, 이번 편은 UE 5.8.4를 직접 열고 따라 하는 실습 편.
 강의 순서는 Unreal Lighting Camp "언리얼 코어 라이팅 클래스 — 첫 번째 시간"(youtu.be/EpC5siHpS_U)의 흐름을 따른다.
 -->
 
@@ -41,7 +41,7 @@ layout: two-cols
 layoutClass: gap-8
 ---
 
-# 지난 시간 복습
+# 1강 복습
 
 라이팅이 레벨 디자인에서 하는 세 가지 일
 
@@ -56,7 +56,7 @@ layoutClass: gap-8
 
 # 오늘 할 일
 
-- **수업 전 준비**: UE 5.8.4 프로젝트 세팅 12종 (별도 슬라이드)
+- **수업 전 준비**: UE 5.8.4 프로젝트 세팅 12종 (2강)
 - 노출(Exposure)이 무엇인지, 카메라로 이해하기
 - 스톱(Stop)과 **EV100**
 - 다이내믹 레인지와 "어디에 노출을 맞출 것인가"
@@ -64,20 +64,20 @@ layoutClass: gap-8
 - 실습: **Post Process Volume**으로 Min/Max EV100 잡기
 
 <!--
-지난 편의 모든 개념(포컬 포인트, 무드, 가독성)은 결국 "어디가 얼마나 밝은가"로 구현된다.
+1강의 모든 개념(포컬 포인트, 무드, 가독성)은 결국 "어디가 얼마나 밝은가"로 구현된다.
 그 "얼마나"를 숫자로 다루지 못하면 라이팅을 비교하거나 재현할 수 없다. 그래서 EV부터 배운다.
 -->
 
 ---
 
-# 0. 수업 전 준비 — 프로젝트 세팅 12종
+# 0. 수업 전 준비 — 2강 프로젝트 세팅 12종
 
 <div class="text-lg">
 프로젝트 세팅은 별도 슬라이드로 정리했다. 실습 전에 먼저 적용하고 오자.
 </div>
 
 <div class="mt-6 text-lg">
-👉 <a href="/slides/ue-project-setup/">언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종 (슬라이드)</a>
+👉 <a href="/slides/ue-project-setup/">2강: 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종 (슬라이드)</a>
 </div>
 
 <div class="mt-8 p-4 rounded bg-red-50 border border-red-300">
@@ -143,7 +143,7 @@ layout: section
 - 반대로 노출 범위를 잡아 주면 **어두운 곳은 어둡게, 밝은 곳은 눈부시게** 남길 수 있다
 
 <!--
-12′03″ 레퍼런스 언급. 지난 편 가독성 슬라이드에서 "너무 어두운 전투 공간" 경고와 연결된다.
+12′03″ 레퍼런스 언급. 1강 가독성 슬라이드에서 "너무 어두운 전투 공간" 경고와 연결된다.
 -->
 
 ---
@@ -440,7 +440,7 @@ EV100   -6      0       5      10      15      20   22
 </div>
 
 <div class="mt-4 text-sm opacity-80">
-영화, 게임, 애니메이션(*WALL-E*처럼 물리 기반 라이팅을 쓴 작품)에서 모두 같은 선택이 반복된다. <b>지난 편의 키아로스쿠로는 결국 "Expose to Bright"의 선택</b>이다.
+영화, 게임, 애니메이션(*WALL-E*처럼 물리 기반 라이팅을 쓴 작품)에서 모두 같은 선택이 반복된다. <b>1강의 키아로스쿠로는 결국 "Expose to Bright"의 선택</b>이다.
 </div>
 
 <!--
@@ -840,7 +840,7 @@ layout: end
 - 박성국, "라이팅을 하기 전 프로젝트 세팅하는 법 (디폴트 프로젝트 세팅 12종)" — https://blog.naver.com/sungkuk_park/224061100654
 - Epic Games, Unreal Engine 문서: Auto Exposure / Physical Lighting Units
 - Wikipedia: Exposure value, Daylight (Illuminance table)
-- 지난 편: 레벨 디자인에서의 라이팅 "맛보기" 강의
+- 1강: 레벨 디자인에서의 라이팅 1 — 오리엔테이션 (/slides/lighting-orientation/)
 
 </div>
 

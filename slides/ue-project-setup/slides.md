@@ -1,10 +1,10 @@
 ---
 theme: default
-title: 레벨 디자이너를 위한 라이팅 — UE 5.8.4 프로젝트 세팅
+title: 레벨 디자이너를 위한 라이팅 2 — UE 5.8.4 프로젝트 세팅
 titleTemplate: '%s · RenderBrains'
 author: Sungkuk Park (RenderBrains)
 info: |
-  레벨 디자이너를 위한 라이팅 강의 수업 전 준비.
+  레벨 디자이너를 위한 라이팅 강의 두 번째 시간 (수업 전 준비).
   언리얼 엔진 5.8.4 새 프로젝트에 라이팅용 디폴트 프로젝트 세팅 12종을 적용합니다.
 lang: ko
 aspectRatio: 16/9
@@ -19,8 +19,8 @@ layout: cover
 class: text-left
 ---
 
-# 수업 전 준비
-## 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종
+# 레벨 디자인에서의 라이팅 2
+## 수업 전 준비: 언리얼 엔진 5.8.4 디폴트 프로젝트 세팅 12종
 
 <div class="mt-8 text-lg opacity-80">
 라이팅을 시작하기 전, 모두가 같은 출발선에 서기 위한 세팅
@@ -54,7 +54,7 @@ https://blog.naver.com/sungkuk_park/224061100654
 </div>
 
 <!--
-"왜 이 값인가"를 모른 채 켜는 것은 지난 시간 말한 "1번 켜세요, 3 넣으세요" 식 학습이다.
+"왜 이 값인가"를 모른 채 켜는 것은 "1번 켜세요, 3 넣으세요" 식 학습이다.
 여기서는 각 항목이 라이팅에 왜 필요한지 한 줄씩 붙여서 본다.
 -->
 
@@ -181,10 +181,10 @@ layout: center
 class: text-center
 ---
 
-# 다음: EV(노출) 세팅
+# 다음: 3. EV(노출) 세팅
 
 <div class="mt-6 text-lg">
-<a href="/slides/ue-ev-setup/">레벨 디자이너를 위한 라이팅 2 — 언리얼 엔진 5.8.4 EV(노출) 세팅 →</a>
+<a href="/slides/ue-ev-setup/">레벨 디자이너를 위한 라이팅 3 — 언리얼 엔진 5.8.4 EV(노출) 세팅 →</a>
 </div>
 
 <div class="abs-br m-10 text-xs opacity-60">Sungkuk Park · RenderBrains</div>
