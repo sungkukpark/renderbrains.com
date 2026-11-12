@@ -40,6 +40,7 @@ jobs:
         run: |
           aws s3 sync dist/ "s3://${{ vars.S3_BUCKET }}" \
             --delete \
+            --exclude 'haesin/*' \
             --cache-control "public, max-age=300"
 
       - name: Invalidate CloudFront
