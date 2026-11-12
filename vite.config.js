@@ -24,7 +24,8 @@ const slidesDirectoryIndex = {
 
 export default {
     root: 'src/', // Sources files (typically where index.html is)
-    publicDir: '../static/', // Path from "root" to static assets (files that are served as they are)
+    // Do not publish the generated lecture decks while they are hidden.
+    publicDir: false,
     plugins: [slidesDirectoryIndex],
     server:
     {
