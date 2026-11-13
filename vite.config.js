@@ -1,16 +1,18 @@
 import { existsSync, readFileSync } from "node:fs"
-import { join } from "node:path"
+import { resolve } from "node:path"
 
-// Serve `/slides/<deck>/` from `static/slides/<deck>/index.html` in dev.
-// Vite's dev server only serves publicDir files by exact path and otherwise
-// falls back to src/index.html; production hosting serves the directory index.
-const slidesDirectoryIndex = {
-    name: 'slides-directory-index',
-    configureServer(server) {
+// Match S3 website directory behavior for the standalone tracker.
+function serveTracker(directory) {
+    return (server) => {
         server.middlewares.use((req, res, next) => {
-            const url = req.url.split('?')[0]
-            if (url.startsWith('/slides/') && url.endsWith('/')) {
-                const file = join(server.config.publicDir, url, 'index.html')
+            const url = new URL(req.url, 'http://localhost')
+            if (url.pathname === '/festival-tracker') {
+                res.writeHead(301, { Location: '/festival-tracker/' + url.search })
+                res.end()
+                return
+            }
+            if (url.pathname === '/festival-tracker/') {
+                const file = resolve(directory(server), 'festival-tracker/index.html')
                 if (existsSync(file)) {
                     res.setHeader('Content-Type', 'text/html; charset=utf-8')
                     res.end(readFileSync(file))
@@ -19,14 +21,19 @@ const slidesDirectoryIndex = {
             }
             next()
         })
-    },
+    }
+}
+const trackerDirectoryIndex = {
+    name: 'tracker-directory-index',
+    configureServer: serveTracker(server => server.config.publicDir),
+    configurePreviewServer: serveTracker(server => resolve(server.config.root, server.config.build.outDir)),
 }
 
 export default {
     root: 'src/', // Sources files (typically where index.html is)
     // Do not publish the generated lecture decks while they are hidden.
-    publicDir: false,
-    plugins: [slidesDirectoryIndex],
+    publicDir: '../public',
+    plugins: [trackerDirectoryIndex],
     server:
     {
         port: 5189,

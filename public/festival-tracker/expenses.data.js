@@ -1,0 +1,1 @@
+window.FESTIVAL_EXPENSES = [];

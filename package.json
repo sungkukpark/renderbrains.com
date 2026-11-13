@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build"
+    "build": "npm run check:festival-tracker && vite build && node scripts/festival-tracker.mjs check dist/festival-tracker",
+    "preview": "vite preview",
+    "sync:festival-tracker": "node scripts/festival-tracker.mjs sync",
+    "check:festival-tracker": "node scripts/festival-tracker.mjs check public/festival-tracker",
+    "test": "node --test tests/*.test.mjs"
   },
   "repository": {
     "type": "git",
