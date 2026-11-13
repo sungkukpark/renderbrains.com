@@ -42,6 +42,7 @@ jobs:
             --delete \
             --exclude 'haesin/*' \
             --exclude 'cabin-duty/*' \
+            --exclude 'render-of-duty/*' \
             --cache-control "public, max-age=300"
 
       - name: Invalidate CloudFront
