@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>인디 게임 출품 트래커</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>인디 게임 출품 트래커</h1>
+      <p class="sub" id="data-stamp">데이터 불러오는 중…</p>
+    </div>
+    <div class="clocks" aria-live="off">
+      <div><span class="clock-label">내 시간</span><span class="clock" id="clock-local">--:--:--</span></div>
+      <div><span class="clock-label">베를린</span><span class="clock" id="clock-berlin">--:--:--</span></div>
+    </div>
+  </header>
+
+  <section class="stats" id="stats" aria-label="요약"></section>
+
+  <nav class="tabs" role="tablist" aria-label="보기">
+    <button role="tab" data-view="upcoming" aria-selected="true">다가오는 마감</button>
+    <button role="tab" data-view="all" aria-selected="false">전체 목록</button>
+    <button role="tab" data-view="timeline" aria-selected="false">타임라인</button>
+    <button role="tab" data-view="path" aria-selected="false">전략 경로</button>
+    <button role="tab" data-view="mine" aria-selected="false">내 추적</button>
+  </nav>
+
+  <section class="filters" aria-label="필터">
+    <input type="search" id="f-query" placeholder="행사·지역·메모 검색" autocomplete="off">
+    <select id="f-category" aria-label="구분"><option value="">모든 구분</option></select>
+    <select id="f-status" aria-label="상태"><option value="">모든 상태</option></select>
+    <select id="f-price" aria-label="비용">
+      <option value="">모든 비용</option>
+      <option value="free">무료 표기</option>
+      <option value="paid">유료 금액 표기</option>
+      <option value="unknown">비용 미공개</option>
+    </select>
+    <select id="f-track" aria-label="내 상태"><option value="">내 상태 전체</option></select>
+    <label class="check"><input type="checkbox" id="f-hide-closed" checked> 마감·종료 숨기기</label>
+    <label class="check" title="내 상태를 '패스'로 표시한 항목을 다가오는 마감에서 뺍니다"><input type="checkbox" id="f-hide-skipped" checked> 패스 숨기기</label>
+    <label class="check"><input type="checkbox" id="f-recheck"> 재확인 필요만</label>
+    <button type="button" class="ghost" id="f-reset">초기화</button>
+  </section>
+
+  <section class="toolbar" aria-label="내보내기">
+    <span id="result-count" class="muted"></span>
+    <span class="spacer"></span>
+    <button type="button" class="ghost" id="btn-pdf" title="지금 보이는 화면을 인쇄 창으로 엽니다. 대상에서 'PDF로 저장'을 고르세요">PDF로 저장</button>
+    <button type="button" class="ghost" id="btn-ics" title="현재 필터에 보이는 항목의 마감·전시 일정을 캘린더 파일로 저장">캘린더(.ics)</button>
+    <button type="button" class="ghost" id="btn-export" title="내 추적 상태를 JSON 파일로 저장">추적 내보내기</button>
+    <button type="button" class="ghost" id="btn-import">추적 가져오기</button>
+    <input type="file" id="import-file" accept="application/json,.json" hidden>
+  </section>
+
+  <p id="print-meta" class="print-only"></p>
+  <main id="view" tabindex="-1"></main>
+
+  <dialog id="detail" aria-labelledby="detail-title">
+    <form method="dialog" class="detail-close"><button aria-label="닫기">✕</button></form>
+    <div id="detail-body"></div>
+  </dialog>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+
+  <noscript>이 앱은 JavaScript가 필요합니다.</noscript>
+  <script src="festivals.data.js"></script>
+  <script src="focus.data.js"></script>
+  <script src="strategy.data.js"></script>
+  <script src="status.js"></script>
+  <script src="expenses.data.js"></script>
+  <script src="expense-model.js"></script>
+  <script src="expense-ui.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
